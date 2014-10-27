@@ -17,7 +17,7 @@ class Dashboard::VotesController < DashboardsController
 
   private
   def find_movie
-    @movie ||= current_user.movie_suggestions.find(params[:movie_id])
+    @movie ||= Movie.find(params[:movie_id])
   end
 
   def votes_params
