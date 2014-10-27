@@ -1,0 +1,33 @@
+.ui.sixteen.wide.column.grid
+  .eight.wide.column
+    .ui.raised.segment
+      .ui.blue.header
+        Suggested Movies
+      .ui.top.right.attached.label
+        = link_to 'Suggest a movie!', new_dashboard_movie_path, class: 'ui blue small button'
+      .ui.sixteen.wide.column.grid
+        .sixteen.wide.column.row
+        - Movie.suggested.each do |movie|
+          .sixteen.wide.column.row
+            .sixteen.wide.column
+              .ui.raised.segment
+                .ui.sixteen.wide.column.grid
+                  .sixteen.wide.column.row.middle.aligned
+                    .two.wide.column.center.aligned
+                      = link_to dashboard_movie_votes_path(movie, vote: {value: :thumbs_up}), style: 'text-decoration: none;', method: :post do
+                        %i.up.arrow.big.icon{style: 'padding-left: 3px;'}
+                      .ui.blue.label{style: 'margin-top: 2px;'}= movie.current_votes
+                      = link_to dashboard_movie_votes_path(movie, vote: {value: :thumbs_down}), style: 'text-decoration: none;', method: :post do
+                        %i.down.arrow.big.icon{style: 'padding-left: 3px;'}
+                    .four.wide.column
+                      = image_tag movie.image_url, class: 'ui rounded small image'
+                    .ten.wide.column
+                      .ui.blue.small.header
+                        = movie.title
+                        .sub.header
+                          = movie.description
+                .floating.ui.circular.red.label
+                  = movie.rating
+  .eight.wide.column
+    .ui.raised.segment
+      = link_to 'Game Zone', '#'

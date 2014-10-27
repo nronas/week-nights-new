@@ -1,0 +1,7 @@
+= simple_form_for [:find, :dashboard, Movie.new], method: :get do |f|
+  .ui.form.segment
+    .inline.field
+      .ui.action.input
+        = f.input_field :title, placeholder: 'Type a movie title'
+        %a.ui.blue.button.form-submit
+          Create

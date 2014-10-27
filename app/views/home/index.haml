@@ -1,0 +1,9 @@
+.ui.sixteen.wide.column.grid
+  .sixteen.wide.column.center.aligned
+    .ui.raised.segment
+      .ui.blue.header
+        - if user_signed_in? && !current_user.approved?
+          Wait for Master to Approve you
+        - else
+          Home
+
