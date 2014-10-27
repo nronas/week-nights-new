@@ -22,7 +22,7 @@
                     .item
                       = image_tag movie[:primary_photo], class: 'ui avatar image'
                       .content
-                        = link_to movie[:text], dashboard_movie_path(movie: movie)
+                        = link_to movie[:text], dashboard_movie_path(Time.now.to_i, movie: movie)
           .sixteen.wide.column.center.aligned.row
             .nine.wide.column
               .ui.blue.header
