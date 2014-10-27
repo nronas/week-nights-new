@@ -9,8 +9,4 @@ class User < ActiveRecord::Base
 
   has_many :movie_suggestions, class_name: 'Movie', foreign_key: 'user_id'
   has_many :votes
-
-  def active_for_authentication?
-    super && approved?
-  end
 end

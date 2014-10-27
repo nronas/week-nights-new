@@ -6,6 +6,25 @@
     = javascript_include_tag "application", "data-turbolinks-track" => true
     = csrf_meta_tags
   %body
+    - if user_signed_in?
+      .ui.menu
+        .item
+          = link_to 'Dashboard', dashboard_path
+        .right.menu
+          .item
+            Welcome
+            = current_user.email
+          .item
+            = link_to 'Logout', destroy_user_session_path, method: :delete, class: 'ui red button'
+    - if flash.present?
+      - if notice.present?
+        .ui.green.floating.message
+          %i.close.icon
+          = notice
+      - if alert.present?
+        .ui.red.floating.message
+          %i.close.icon
+          = alert
     .ui.page.grid
       .column
         = yield
