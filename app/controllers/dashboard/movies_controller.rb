@@ -17,12 +17,12 @@ class Dashboard::MoviesController < DashboardsController
 
   def create
     if current_user.movie_suggestions.find_by_title(movie_params[:title])
-      redirect_to authenticated_root_path, alert: 'You have already suggest that movie'
+      redirect_to dashboard_path, alert: 'You have already suggest that movie'
     else
       current_user.movie_suggestions << Movie.new(movie_params)
 
       if current_user.save
-        redirect_to authenticated_root_path, alert: 'Thanks for your suggestion!'
+        redirect_to dashboard_path, notice: 'Thanks for your suggestion!'
       else
         redirect_to dashboard_movies_path(movie: movie_params), alert: current_user.errors.full_messages
       end
