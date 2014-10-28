@@ -29,8 +29,22 @@ class Dashboard::MoviesController < DashboardsController
     end
   end
 
+  def update
+    if current_user.master?
+      movie = Movie.find(params[:id])
+
+      if movie.update_attributes(movie_params)
+        redirect_to dashboard_path, notice: 'Thanks Master'
+      else
+        redirect_to dashboard_path, alert: 'Oops, Something went wrong.'
+      end
+    else
+      redirect_to dashboard_path, alert: 'Only The Master can use that function'
+    end
+  end
+
   private
   def movie_params
-    params.require(:movie).permit(:title, :text, :primary_photo, :url, :image_url, :description, :rating)
+    params.require(:movie).permit(:title, :text, :primary_photo, :url, :image_url, :description, :rating, :viewed)
   end
 end

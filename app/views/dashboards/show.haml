@@ -28,6 +28,8 @@
                           = movie.description
                 .floating.ui.circular.red.label
                   = movie.rating
+                .sixteen.wide.column
+                  = button_to 'Viewed', dashboard_movie_path(movie, movie: {viewed: true}), class: 'ui fluid green button', method: :put
   .eight.wide.column
     .ui.raised.segment
       = link_to 'Game Zone', '#'

@@ -14,7 +14,7 @@ WeekNights::Application.routes.draw do
   resource :dashboard, only: :show
 
   namespace :dashboard do
-    resources :movies, only: [:new, :create, :show] do
+    resources :movies, only: [:new, :create, :show, :update] do
       collection do
         get :find
       end
