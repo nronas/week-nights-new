@@ -4,7 +4,7 @@ class Movie < ActiveRecord::Base
   has_many :votes
 
   scope :suggested, ->() do
-    where("viewed = ? AND created_at >= ?", false, Time.now - 1.week)
+    where("viewed = ? AND created_at >= ?", false, Time.now - 1.week).order(rating: :desc)
   end
 
   def current_votes
